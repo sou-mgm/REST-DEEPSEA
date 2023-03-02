@@ -1,0 +1,27 @@
+{
+  "name": "rest-api",
+  "version": "1.0.0",
+  "description": "Repositorio de produtos do app Deep Sea",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sou-mgm/REST-DEEPSEA.git"
+  },
+  "keywords": [
+    "Node",
+    "Store",
+    "APP"
+  ],
+  "author": "Matheus Gaudencio Matias",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "bugs": {
+    "url": "https://github.com/sou-mgm/REST-DEEPSEA/issues"
+  },
+  "homepage": "https://github.com/sou-mgm/REST-DEEPSEA#readme"
+}
