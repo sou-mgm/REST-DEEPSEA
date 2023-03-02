@@ -1,6 +1,9 @@
+// Servidor, onde é criado a REST API
+
+
 // Cria um servo padrao de requisicao
 const http = require('http');
-//Regasta o objeto http exportado
+//Regasta o objeto http 
 const app = require('./app')
 // Defini a porta
 const port = process.env.PORT || 3000;

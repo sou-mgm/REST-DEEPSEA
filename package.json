@@ -4,7 +4,8 @@
   "description": "Repositorio de produtos do app Deep Sea",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,10 +19,14 @@
   "author": "Matheus Gaudencio Matias",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
   },
   "bugs": {
     "url": "https://github.com/sou-mgm/REST-DEEPSEA/issues"
   },
-  "homepage": "https://github.com/sou-mgm/REST-DEEPSEA#readme"
+  "homepage": "https://github.com/sou-mgm/REST-DEEPSEA#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
 }
