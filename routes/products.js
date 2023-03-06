@@ -33,7 +33,8 @@ router.get('/:id_product', (req,res,next) => {
     mysql.getConnection((error, conn) => {
         if(error) {return res.status(500).send({error: error})}
         conn.query(
-            'SELECT id_product FROM products',
+            'SELECT * FROM products WHERE id_product = ?;',
+            [req.params.id_product],
             (error, result ,field) => {
 
                 if(error){
@@ -82,6 +83,60 @@ router.post('/', (req, res, next) => {
 
 });
 
+// Para alterar um produto
+router.patch('/', (req, res, next) => {
+    
+    mysql.getConnection((error, conn) => {
+        if(error) {return res.status(500).send({error: error})}
+        conn.query(
+            `UPDATE products SET name = ?,price = ?,imageName = ?,description = ?,measurementChart = ?,size = ?,category = ?,itsNew = ?,itsTopProduct = ? WHERE id_product = ?`,
+            [req.body.name,req.body.price,req.body.imageName,req.body.description,req.body.measurementChart,req.body.size,req.body.category,req.body.itsNew,req.body.itsTopProduct,req.body.id_product],
+            (error, result ,field) => {
+                //Método importante - Realiza um release do pull, evitando congestionamento nas chamadas
+                conn.release();
+                if(error){
+                    return res.status(500).send ({
+                        error: error,
+                        response: null
+                    });
+                }
+
+                res.status(202).send({
+                    mensagem: 'Produto alterado com sucesso'
+                });
+
+            }
+        )
+    });
+
+});
+
+// Para deletar um produto
+router.delete('/', (req, res, next) => {
+    
+    mysql.getConnection((error, conn) => {
+        if(error) {return res.status(500).send({error: error})}
+        conn.query(
+            `DELETE FROM products WHERE id_product = ?`,[req.body.id_product],
+            (error, result ,field) => {
+                //Método importante - Realiza um release do pull, evitando congestionamento nas chamadas
+                conn.release();
+                if(error){
+                    return res.status(500).send ({
+                        error: error,
+                        response: null
+                    });
+                }
+
+                res.status(202).send({
+                    mensagem: 'Produto deletado com sucesso'
+                });
+
+            }
+        )
+    });
+
+});
 
 
 module.exports = router;
