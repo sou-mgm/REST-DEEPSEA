@@ -11,6 +11,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 // Defini a rota de produtos
 const productRoute = require('./routes/products');
+//Defini a rota de pedidos
+const ordersRoute = require('./routes/orders')
 
 //Rotas das informacoes
 app.use(morgan('dev'));
@@ -21,6 +23,8 @@ app.use(bodyParser.json());
 
 //Defini como será o nome da rota, e "chama a referencia"
 app.use('/products',productRoute);
+
+app.use('/orders',ordersRoute);
 
 //Tratamento de CORS - Permitindo o acesso de todos, só em JSON
 app.use((req,res,next)=> {
